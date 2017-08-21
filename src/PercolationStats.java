@@ -1,3 +1,4 @@
+
 /**
  * To test Percolation.java
  *
@@ -18,7 +19,7 @@ public class PercolationStats {
             throw new java.lang.IllegalArgumentException("n and trials needs to be more than 0");
         }
         perCount = trials;
-        int arraySize = n*n;
+        int arraySize = n * n;
         int[] randArray = new int[arraySize];
         openVsClosed = new double[trials];
         for (int count = 0; count < arraySize; count++) {
@@ -28,7 +29,7 @@ public class PercolationStats {
             Percolation percolation = new Percolation(n);
             StdRandom.shuffle(randArray);
             for (int id : randArray) {
-                percolation.open((id / n)+1, (id % n)+1);
+                percolation.open((id / n) + 1, (id % n) + 1);
                 if (percolation.percolates()) {
                     break;
                 }
@@ -49,12 +50,12 @@ public class PercolationStats {
     }                        // sample standard deviation of percolation threshold
 
     public double confidenceLo() {
-        return mean()-((1.96*stddev()/Math.sqrt(perCount)));
+        return mean() - ((1.96 * stddev() / Math.sqrt(perCount)));
 
     }                  // low  endpoint of 95% confidence interval
 
     public double confidenceHi() {
-        return mean()+((1.96*stddev()/Math.sqrt(perCount)));
+        return mean() + ((1.96 * stddev() / Math.sqrt(perCount)));
     }                 // high endpoint of 95% confidence interval
 
     public static void main(String[] args) {
@@ -65,8 +66,7 @@ public class PercolationStats {
         String confidence = percolationStats.confidenceLo() + ", " + percolationStats.confidenceHi();
         StdOut.println("mean                    = " + percolationStats.mean());
         StdOut.println("stddev                  = " + percolationStats.stddev());
-        StdOut.println("95% confidence interval = [" + confidence+"]");
+        StdOut.println("95% confidence interval = [" + confidence + "]");
     }
-
 
 }

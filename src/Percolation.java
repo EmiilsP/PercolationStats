@@ -22,7 +22,7 @@ public class Percolation {
             throw new java.lang.IllegalArgumentException("n needs to be more than 1");
         }
         openSites = 0;
-        top=0;
+        top = 0;
         maxRow = n;
         bot = n * n + 1;
         cell = new boolean[n][n];
@@ -50,15 +50,10 @@ public class Percolation {
         if (row == 1) {
             weighted.union(current, top);
             backwash.union(current, top);
-
-
         }
         if (row == maxRow) {
             backwash.union(current, bot);
-
-
         }
-
 
         if (col > 1 && isOpen(row, (col - 1))) {   // check to the left
             weighted.union(current, sideLeft);
